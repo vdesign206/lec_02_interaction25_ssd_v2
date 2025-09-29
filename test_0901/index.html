@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    const product = {
+      제품명: '7D 건조 망고',
+      유형: '당절임',
+      성분: '망성, 설탕, 메타중아황산나트륨, 치자황색소',
+      원산지: '필리핀'
+    }
+
+    const pet = {
+      name: '구름',
+      eat: function (food) {
+        alert(this.name + '은/는' + food + '을/를 먹습니다.')
+      }
+    }
+
+    pet.eat('밥');
+
+    const student = {}
+    student.이름 = '윤인성'
+    student.취미 = '악기'
+    student.장래희망 = '생명공학자'
+
+    console.log(JSON.stringify(student, null, 2))
+
+    const pet2 = {
+      name: '노을',
+      eat(food) {
+        alert(this.name + '은/는' + food + '을/를 먹습니다.')
+      }
+    }
+
+    pet2.eat('간식');
+
+    Number.prototype.power = function(n=2) {
+      return this.valueOf()**n;
+    }
+
+    const a = 12
+    console.log('a.power():', a.power());
+  </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: skyblue;
+      flex-wrap: wrap;
+    }
+    .item {
+      width: 200px;
+      height: 200px;
+      background-color: gray;
+      color: white;
+      font-size: 72px;
+      text-align: center;
+      line-height: 200px;
+    }
+
+    .desc {
+      width: 300px;
+      height: 150px;
+      background-color: lightgrey;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+    
+    /* .item1:hover {
+      transform: rotate(360deg);
+      transition: 1000ms;
+    } */
+  </style>
+</head>
+<body>
+  <div class="container top">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+  </div>
+  <div class="container description">
+    <div class="desc item1">스타일 속성을 변경</div>
+    <div class="desc item2">requestAnimationFrame 메소드 사용</div>
+    <div class="desc item3">addEventListener를 이용한 제어 mouseEvent</div>
+    <div class="desc item4">requestAnimationFrame메소드와 addEventListener메소드 사용</div>
+  </div>
+
+  <script>
+    const item1 = document.querySelector('.item1');
+    const item2 = document.querySelector('.item2');
+    const item3 = document.querySelector('.item3');
+    const item4 = document.querySelector('.item4');
+    // 첫번째 사각형 : 스타일 속성값 변경
+    window.addEventListener('load', function() {
+      item1.style.transform = 'rotate(360deg)';
+      item1.style.transition = '10s';
+    })
+
+    // 두번째 사각형: requestAnimaitionFrame 이용
+    let rotate = 0;
+    function item2Rotate() {
+      item2.style.transform = `rotate(${rotate}deg)`;
+      rotate += 1;
+      requestAnimationFrame(item2Rotate);
+    }
+    item2Rotate();
+
+    // 세번째 사각형: click이벤트가 발생하면 90도회전
+    let rotate3 = 0;
+    item3.addEventListener('click', function(){
+      rotate3 += 90;
+      item3.style.transform = `rotate(${rotate3}deg)`;
+      item3.style.transition = '1s';
+    })
+
+    // 네번째 사각형: requestAnimationFrame을 취소하기cancelAnimationFrame
+
+    let rotate4 = 0;
+    let item4Req;
+
+    function item4Rotate() {
+      rotate4 += 5;
+      item4.style.transform = `rotate(${rotate4}deg)`;
+      item4Req = requestAnimationFrame(item4Rotate);
+    }
+    
+    item4.addEventListener('mouseover', function(){
+      item4Rotate();
+    })
+    item4.addEventListener('mouseleave', function() {
+      cancelAnimationFrame(item4Req);
+    })
+
+  </script>
+  
+</body>
+</html>
