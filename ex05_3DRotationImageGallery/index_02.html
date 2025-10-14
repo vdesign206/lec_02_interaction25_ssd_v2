@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex; 
+      justify-content: center;
+      /* align-items: center; */
+      height: 2000px;
+      background: radial-gradient( #2C5364, #0F2027);
+      background-attachment: fixed;
+    }
+    .container {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      overflow: hidden;
+    }
+
+    .box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      transform: translate(-50%, -50%);
+      /* margin: -100px 0 0 -100px; */
+      animation: animate 20s linear infinite ;
+      background-color: orange;
+    }
+
+    .box span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform-origin: center;
+      /* transform-style: preserve-3d; */
+      transform: rotate(calc(var(--i) * 45deg)) translateY(-400px);
+      -webkit-box-reflect: below 0px linear-gradient(transparent, transparent, #0009);
+    }
+    @keyframes animate {
+      0%{
+        transform: rotate(0deg);
+      }
+      100%{
+        transform: rotate(360deg);
+      }
+    }
+
+    .box span img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <span style="--i:1;"><img src="./imgs/img1.jpg" alt=""></span>
+      <span style="--i:2;"><img src="./imgs/img2.jpg" alt=""></span>
+      <span style="--i:3;"><img src="./imgs/img3.jpg" alt=""></span>
+      <span style="--i:4;"><img src="./imgs/img4.jpg" alt=""></span>
+      <span style="--i:5;"><img src="./imgs/img5.jpg" alt=""></span>
+      <span style="--i:6;"><img src="./imgs/img6.jpg" alt=""></span>
+      <span style="--i:7;"><img src="./imgs/img7.jpg" alt=""></span>
+      <span style="--i:8;"><img src="./imgs/img8.jpg" alt=""></span>
+    </div>
+  </div>
+  
+  
+  <script>
+    const imgBox = document.querySelector('.box');
+    let aniState = 1;
+    document.addEventListener('click', () => {
+      if (aniState) {
+        imgBox.style.animation = `animate 20s linear infinite paused`
+        aniState = 0;
+      } else {
+        imgBox.style.animation = `animate 20s linear infinite running`
+        aniState = 1;
+      }
+    });
+  </script>
+  
+</body>
+</html> 
