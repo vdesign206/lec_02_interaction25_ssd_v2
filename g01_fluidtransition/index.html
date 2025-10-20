@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+</head>
+<body>
+    <div class="slider">
+        <canvas></canvas>
+        <div class="slider-content">
+            <div class="slide-title">
+                <h1>Cable Car</h1>
+            </div>
+            <div class="slide-description">
+                <p>A scenic cable car ride above the hills.</p>
+                <div class="slide-info">
+                    <p>Type. Editorial</p>
+                    <p>Field. transport, mountain, scenic, sky</p>
+                    <p>Date. 2025</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="importmap">
+        {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.154.0/examples/jsm/"
+        }
+        }
+    </script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
