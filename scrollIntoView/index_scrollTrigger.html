@@ -27,10 +27,7 @@
             </div>
         </div>
     </div>
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
 
-    </script>
 
     <section id="home">
         <div class="wrapper">
@@ -82,6 +79,20 @@
 
 
     <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to('#about h1', {
+            scrollTrigger: {
+                trigger: '#about h1',
+                start:'top 50%',
+                end: 'bottom top',
+                markers: true,
+                toggleActions: 'restart pause resume reverse',
+                scrub:1,
+            },
+            x: 500
+        });
+        gsap.from('#about h2',{x:500,duration:5})
         const btnHome = document.querySelector('.home');
         const sectionHome = document.querySelector('#home');
         btnHome.addEventListener('click', function() {
