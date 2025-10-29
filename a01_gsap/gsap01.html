@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <style>
+    .container {
+
+      position: absolute;
+      overflow: hidden;
+      width: 500px;
+      height: 400px;
+      /* margin: 0 auto; */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .box:nth-child(1) {
+      background-color: skyblue;
+    }
+    .box:nth-child(2) {
+      background-color: rgb(135, 235, 173);
+    }
+    .box:nth-child(3) {
+      background-color: rgb(202, 235, 135);
+    }
+    .box:nth-child(4) {
+      background-color: rgb(147, 135, 235);
+    }
+    .box:nth-child(5) {
+      background-color: rgb(235, 135, 167);
+    }
+    .box {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      font-size: 200px;
+      text-align: center;
+      line-height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+
+  </div>
+  
+
+  <script>
+    // use a script tag or an external JS file
+    document.addEventListener("DOMContentLoaded", (event) => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.container',
+          pin: true, // pin the trigger element while active
+          start: 'top top', // when the top of the trigger hits the top of the viewport
+          end: '+=6000', // end after scrolling 500px beyond the start
+          scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+          snap: {
+            snapTo: 'labels', // snap to the closest label in the timeline
+            duration: { min: 0.2, max: 3 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+            delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
+            ease: 'power1.inOut' // the ease of the snap animation ("power3" by default)
+          }
+        }
+      });
+      const boxs = document.querySelectorAll('.box');
+
+      tl.addLabel('first')
+      .from(boxs[0],2,{xPercent:-100})
+      .addLabel('second')
+      .from(boxs[1],2,{yPercent: -100})
+      .addLabel('third')
+      .from(boxs[2],2,{xPercent: 100})
+      .addLabel('forth')
+      .from(boxs[3],2,{yPercent: 100})
+      .addLabel('fifth')
+      .from(boxs[4],2,{yPercent: -100})
+      .addLabel('end');
+
+     // gsap code here!
+    });
+
+  </script>
+</body>
+</html>
