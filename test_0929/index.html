@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 </head>
 <body>
     <div class="btns">
@@ -61,56 +63,56 @@
                 <button class="category__btn" data-filter="mobile">Mobile Design<span class="category__count">2</span></button>
             </div>
             <div class="work__projects">
-                <a href="#" class="project" target="_blank" data-type="visual">
+                <a href="./imgs/stu01_origin.png" class="project portfolio-lightbox" target="_blank" data-type2="visual">
                     <img src="imgs/stu01.png" alt="" class="project__img">
                     <div class="project__description">
                         <h3>Stu01 Portfolio</h3>
                         <span>Promotion Design</span>
                     </div>
                 </a>
-                <a href="#" class="project" target="_blank" data-type="visual">
+                <a href="./imgs/stu02_origin.jpg" class="project portfolio-lightbox" target="_blank" data-type2="visual">
                     <img src="imgs/stu02.png" alt="" class="project__img">
                     <div class="project__description">
                         <h3>Stu02 Portfolio</h3>
                         <span>Promotion Design</span>
                     </div>
                 </a>
-                <a href="#" class="project" target="_blank" data-type="visual">
+                <a href="./imgs/stu03_origin.jpg" class="project portfolio-lightbox" target="_blank" data-type2="visual">
                     <img src="imgs/stu03.png" alt="" class="project__img">
                     <div class="project__description">
                         <h3>Stu03 Portfolio</h3>
                         <span>Promotion Design</span>
                     </div>
                 </a>
-                <a href="#" class="project" target="_blank" data-type="web">
+                <a href="./imgs/stu04_origin.png" class="project portfolio-lightbox" target="_blank" data-type2="web">
                     <img src="imgs/stu04.png" alt="" class="project__img">
                     <div class="project__description">
                         <h3>Stu04 Portfolio</h3>
                         <span>Promotion Design</span>
                     </div>
                 </a>
-                <a href="#" class="project" target="_blank" data-type="web">
+                <a href="./imgs/stu05_origin.jpg" class="project portfolio-lightbox" target="_blank" data-type2="web">
                     <img src="imgs/stu05.png" alt="" class="project__img">
                     <div class="project__description">
                         <h3>Stu05 Portfolio</h3>
                         <span>Promotion Design</span>
                     </div>
                 </a>
-                <a href="#" class="project" target="_blank" data-type="web">
+                <a href="./imgs/stu06_origin.jpg" class="project portfolio-lightbox" target="_blank" data-type2="web">
                     <img src="imgs/stu06.png" alt="" class="project__img">
                     <div class="project__description">
                         <h3>Stu06 Portfolio</h3>
                         <span>Promotion Design</span>
                     </div>
                 </a>
-                <a href="#" class="project" target="_blank" data-type="mobile">
+                <a href="./imgs/stu07_origin.png" class="project portfolio-lightbox" target="_blank" data-type2="mobile">
                     <img src="imgs/stu07.png" alt="" class="project__img">
                     <div class="project__description">
                         <h3>Stu07 Portfolio</h3>
                         <span>Promotion Design</span>
                     </div>
                 </a>
-                <a href="#" class="project" target="_blank" data-type="mobile">
+                <a href="./imgs/stu08_origin.jpg" class="project portfolio-lightbox" target="_blank" data-type2="mobile">
                     <img src="imgs/stu08.png" alt="" class="project__img">
                     <div class="project__description">
                         <h3>Stu08 Portfolio</h3>
@@ -135,7 +137,7 @@
         </span>     
     </button>
 
-
+    <script src="https://unpkg.com/lenis@1.3.13/dist/lenis.min.js"></script> 
     <script>
         const btnHome = document.querySelector('.home');
         const sectionHome = document.querySelector('#home');
@@ -197,7 +199,7 @@
             projectContainer.classList.add('anim-out');
                 setTimeout(() => {
                 projects.forEach((project) => {
-                if(filter === '*' || filter === project.dataset.type){
+                if(filter === '*' || filter === project.dataset.type2){
                     project.classList.remove('invisible');
                 } else {
                     project.classList.add('invisible');
@@ -206,6 +208,22 @@
                 projectContainer.classList.remove('anim-out');
             }, 200);
         });
+
+        const lightbox = GLightbox({
+            selector: '.portfolio-lightbox'
+        });
+        // Initialize Lenis
+        const lenis = new Lenis();
+
+        // Use requestAnimationFrame to continuously update the scroll
+        function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+
 
 
 
