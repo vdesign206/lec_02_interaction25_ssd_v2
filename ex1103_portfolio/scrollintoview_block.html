@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        }
+        .phase-button {
+        list-style: none;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        display: flex;
+        z-index: 2;
+        }
+
+        .phase-button li {
+        width: 15%;
+        height: 3vh;
+        }
+
+        .phase-button button {
+        width: 100%;
+        height: 100%;
+        }
+
+        .phase {
+        list-style: none;
+        }
+
+        .phase li {
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        }
+        .phase li:nth-child(0) {
+        background-color: antiquewhite;
+        }
+
+        .phase li:nth-child(1) {
+        background-color: red;
+        }
+
+        .phase li:nth-child(2) {
+        background-color: blue;
+        }
+
+        .phase li:nth-child(3) {
+        background-color: aqua;
+        }
+
+        .phase li:nth-child(4) {
+        background-color: teal;
+        }
+
+        .phase li:nth-child(5) {
+        background-color: wheat;
+        }
+
+        .phase li:nth-child(6) {
+        background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <ul class='phase-button'>
+        <li><button>1</button></li>
+        <li><button>2</button></li>
+        <li><button>3</button></li>
+        <li><button>4</button></li>
+        <li><button>5</button></li>
+        <li><button>6</button></li>
+        <li><button>7</button></li>
+    </ul>
+    <ul class='phase'>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ul>
+    <script >
+        const phaseNav = document.querySelector('.phase-button');
+        const phaseButtons = document.querySelectorAll('.phase-button button');
+        const phase = document.querySelectorAll('.phase li');
+
+        phaseNav.addEventListener('click', (e) => {
+        const target = e.target;
+        if (target.tagName !== 'BUTTON') return;
+
+        const targetIndex = Array.from(phaseButtons).indexOf(target);
+        phase[targetIndex].scrollIntoView({
+            block: 'center',
+            behavior: 'smooth',
+        });
+        });
+    </script>
+</body>
+</html>

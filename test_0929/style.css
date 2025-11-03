@@ -68,6 +68,9 @@ section {
     /* height: 100vh; */
     text-align: center;
 }
+#skills {
+    height: 200vh;
+}
 /* section:nth-child(odd) {
     background-color: skyblue;
 } */

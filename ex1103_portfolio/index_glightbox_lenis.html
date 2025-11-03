@@ -136,6 +136,8 @@
             arrow_upward
         </span>     
     </button>
+
+    <script src="https://unpkg.com/lenis@1.3.13/dist/lenis.min.js"></script> 
     <script>
         // const btnHome = document.querySelector('.home');
         const sectionHome = document.querySelector('#home');
@@ -225,6 +227,18 @@
         const lightbox = GLightbox({
             selector: '.portfolio-lightbox'
         });
+
+        // lenis적용 스크롤을 부드럽게 처리
+        // Initialize Lenis
+        const lenis = new Lenis();
+
+        // Use requestAnimationFrame to continuously update the scroll
+        function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
 
     </script>
 </body>
